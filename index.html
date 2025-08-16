@@ -38,6 +38,37 @@
 
 <body class="Designed By Swayam Singh">
 
+    <div class="popup-bg"></div>
+    <div class="popup">
+        <span class="close-popup" onclick="hidePopup()"><i class="fa-solid fa-xmark"></i></span>
+        <img src="images/popup.jpg" class="img-fluid" alt="popup">
+        <p class="p-1">🌸✨ श्रीकृष्ण जन्माष्टमी की हार्दिक शुभकामनाएँ ✨🌸<br><br>
+
+            KundanPro परिवार की ओर से आप सभी को श्रीकृष्ण जन्माष्टमी की मंगलमय शुभकामनाएँ।<br>
+            भगवान श्रीकृष्ण की कृपा से आपके जीवन में सुख, शांति, समृद्धि और आनंद का वास हो।<br><br>
+
+            जय श्री कृष्ण 🙏💫<br>
+
+            — टीम KundanPro
+        </p>
+    </div>
+
+    <script>
+        function showPopup() {
+            setTimeout(() => {
+                document.querySelector('.popup').classList.add('show');
+                document.querySelector('.popup-bg').classList.add('show');
+            }, 4000);
+        }
+
+        showPopup();
+
+        function hidePopup() {
+            document.querySelector('.popup').classList.remove('show');
+            document.querySelector('.popup-bg').classList.remove('show');
+        }
+    </script>
+
     <header class="sticky-top bg-white shadow">
         <div class="container p-3 px-md-5">
             <div class="header d-flex justify-content-between align-items-center">
