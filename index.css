@@ -4,7 +4,7 @@ body {
     font-style: normal;
     /* height: 10000px; */
     line-height: 1.6;
-    color: rgb(17, 59, 23);
+    color: black;
     overflow-x: hidden;
 }
 
@@ -20,6 +20,10 @@ a {
 
 a:hover {
     color: #40a05b;
+}
+
+.color-yellow {
+    color: #eabb31;
 }
 
 .button {
@@ -107,7 +111,16 @@ a:hover {
     border-radius: 50px;
 }
 
+.heading-2 {
+    color: #2670b3;
+    font-weight: 600;
+}
+
 /* header section  */
+header {
+    position: relative;
+    z-index: 999999;
+}
 
 .logo img {
     height: 65px;
@@ -130,10 +143,11 @@ a:hover {
 .bg-video {
     position: relative;
     width: 100vw;
-    height: 70vh;
+    height: 80vh;
     overflow: hidden;
     margin: 0;
     padding: 0;
+    /* margin-top: -97px; */
 }
 
 .bg-video video {
@@ -141,7 +155,7 @@ a:hover {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 70vh;
+    height: 80vh;
     object-fit: cover;
     z-index: 1;
     pointer-events: none;
@@ -151,10 +165,11 @@ a:hover {
 .video-content {
     position: absolute;
     top: 30%;
-    left: 10%;
+    left: 0;
     z-index: 2;
     color: rgb(255, 255, 255);
     text-shadow: 1px 1px 10px black;
+    padding: 0px 140px;
 }
 
 .video-content h1 {
@@ -222,6 +237,27 @@ textarea {
     filter: invert(1);
 }
 
+.why-box {
+    background-color: white;
+    border: 1px solid rgb(227, 227, 227);
+    /* color: #2670b3; */
+    padding: 14px;
+    border-radius: 10px;
+    height: 100%;
+    transition: all .2s ease;
+}
+
+.why-box:hover {
+    box-shadow: 1px 1px 6px #2670b3;
+    color: #2670b3;
+}
+
+.why-box img,
+.why-box h5 {
+    height: 50px;
+    margin-bottom: 10px;
+}
+
 
 /* popip css  */
 .popup {
@@ -229,7 +265,7 @@ textarea {
     width: 300px;
     border: 1px solid black;
     background-color: white;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
