@@ -345,3 +345,13 @@ textarea {
         visibility: visible;
     }
 }
+
+.social-icon {
+    font-size: 27px;
+    color: white;
+    margin: 0px 16px;
+}
+
+.social-icon:hover {
+    color: #53b760;
+}
