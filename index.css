@@ -25,8 +25,13 @@ a:hover {
 .color-yellow {
     color: #eabb31;
 }
-.back-yellow{
+
+.back-yellow {
     background-color: #eabb31;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 .button {
@@ -167,7 +172,7 @@ header {
 
 .video-content {
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 0;
     z-index: 2;
     color: rgb(255, 255, 255);
@@ -180,7 +185,14 @@ header {
     margin-bottom: 15px;
 }
 
-@media screen and (max-width:650px) {
+@media screen and (max-width:992px) {
+    .video-content {
+        top: 10%;
+        padding: 0px 100px;
+    }
+}
+
+@media screen and (max-width:700px) {
     .logo img {
         height: 50px;
     }
@@ -190,12 +202,12 @@ header {
     }
 
     .video-content {
-        top: 25%;
+        top: 10%;
         padding: 0px 70px;
     }
 }
 
-@media screen and (max-width:650px) {
+@media screen and (max-width:500px) {
     .video-content {
         padding: 0px 30px;
     }
@@ -264,7 +276,12 @@ textarea {
 .why-box:hover {
     box-shadow: 1px 1px 6px #2670b3;
     color: #2670b3;
+    /* background-color: #2670b3; */
 }
+
+/* .why-box:hover img {
+    filter: invert(1);
+} */
 
 .why-box img,
 .why-box h5 {
