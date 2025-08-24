@@ -25,6 +25,9 @@ a:hover {
 .color-yellow {
     color: #eabb31;
 }
+.back-yellow{
+    background-color: #eabb31;
+}
 
 .button {
     border: none;
@@ -32,7 +35,7 @@ a:hover {
     background-size: 200% 200%;
     color: white;
     border-radius: 50px;
-    padding: 10px 20px;
+    padding: 10px 30px 10px 20px;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
@@ -164,7 +167,7 @@ header {
 
 .video-content {
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 0;
     z-index: 2;
     color: rgb(255, 255, 255);
@@ -185,9 +188,20 @@ header {
     .video-content h1 {
         font-size: 2rem;
     }
+
+    .video-content {
+        top: 25%;
+        padding: 0px 70px;
+    }
 }
 
-footer {
+@media screen and (max-width:650px) {
+    .video-content {
+        padding: 0px 30px;
+    }
+}
+
+.animation-bg {
     background: linear-gradient(63deg, #2670b3 60%, #19fbfa);
     background-size: 200% 200%;
     animation: gradientMove 5s ease infinite;
