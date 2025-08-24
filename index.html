@@ -319,12 +319,13 @@
                     </div>
                     <div class="col-lg-4 py-4 py-md-2">
                         <div class="px-3" id="contact">
-                            <form action="" method="post">
+                            <form id="contactForm">
                                 <h5 class=" mb-3 icon">Connect With Us</h5>
-                                <input type="text" name="name" id="name" placeholder="Name">
-                                <input type="email" name="email" id="email" placeholder="Email">
-                                <textarea name="message" id="message" placeholder="message"></textarea>
-                                <button class="button"><span class="text-top">Submit</span></button>
+                                <input type="text" name="name" id="name" placeholder="Name" required>
+                                <input type="email" name="email" id="email" placeholder="Email" required>
+                                <textarea name="message" id="message" placeholder="message" required></textarea>
+                                <button class="button" type="submit"><span class="text-top">Submit</span></button>
+                                <div id="messageBox" style="margin-top:10px;"></div>
                             </form>
                         </div>
                     </div>
@@ -346,6 +347,32 @@
 
     <!-- my js  -->
     <script src="index.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            const messageBox = document.getElementById('messageBox');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    messageBox.innerText = 'Sending...';
+                    const formData = new FormData(form);
+                    fetch('sendMail.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(data => {
+                            messageBox.innerText = data;
+                            form.reset();
+                        })
+                        .catch(error => {
+                            messageBox.innerText = 'An error occurred. Please try again.';
+                        });
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
