@@ -355,3 +355,9 @@ textarea {
 .social-icon:hover {
     color: #53b760;
 }
+
+#messageBox {
+    color: white;
+    font-weight: bold;
+    text-shadow: 0px 0px 8px black;
+}
