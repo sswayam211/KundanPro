@@ -70,7 +70,7 @@
                     <a href="tel:+918181822555" class="d-none d-md-inline"><i class="fa-solid fa-phone icon"></i> +91
                         81818
                         22555</a>
-                    <a href="#contact"><button class="button"><span class="text-top">Contact Us</span></button></a>
+                    <a href="#contactForm"><button class="button"><span class="text-top">Contact Us</span></button></a>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
                             <p>We build high-performance websites, custom applications, and data-driven marketing
                                 strategies to
                                 accelerate your business in the digital era.</p>
-                            <a href="#contact"><button class="button mt-4"><span class="text-top">Get a Free
+                            <a href="#contactForm"><button class="button mt-4"><span class="text-top">Get a Free
                                         Consultation
                                         Today</span></button></a>
                         </div>
@@ -291,7 +291,7 @@
         <div class="hero-ask back-yellow ">
             <div class="container p-3 p-md-4 text-center">
                 <h2 class="fw-bold mb-4">READY TO TAKE YOUR BUSSINESS TO NEXT LEVEL?</h2>
-                <a href=""><button class="button">Schedule A Free Call Now</button></a>
+                <a href="#contactForm"><button class="button">Schedule A Free Call Now</button></a>
             </div>
         </div>
 
@@ -324,7 +324,7 @@
                                 <input type="text" name="name" id="name" placeholder="Name" required>
                                 <input type="email" name="email" id="email" placeholder="Email" required>
                                 <textarea name="message" id="message" placeholder="message" required></textarea>
-                                <button class="button" type="submit"><span class="text-top">Submit</span></button>
+                                <button class="button" id="submit-form" type="submit"><span class="text-top">Submit</span></button>
                                 <div id="messageBox" style="margin-top:10px;"></div>
                             </form>
                         </div>
@@ -340,7 +340,7 @@
                     <div class="col-md-6">
                         <a href="https://www.facebook.com/kundanprojects/" target="_blank" class="social-icon"><i
                                 class="fa-brands fa-whatsapp"></i></a>
-                        <a href="https://www.facebook.com/share/18Mrhx1G3y/" target="_blank" class="social-icon"><i
+                        <a href="https://www.facebook.com/kundanprojects/" target="_blank" class="social-icon"><i
                                 class="fa-brands fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/kundanprojects/ " target="_blank" class="social-icon"><i
                                 class="fa-brands fa-instagram"></i></a>
@@ -371,20 +371,27 @@
             if (form) {
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
+                    
+                    document.getElementById('submit-form').disabled = true;
+                    document.getElementById('submit-form').cursor = 'not-allowed';
+                    
                     messageBox.innerText = 'Sending...';
                     const formData = new FormData(form);
                     fetch('sendMail.php', {
                         method: 'POST',
                         body: formData
                     })
-                        .then(response => response.text())
-                        .then(data => {
-                            messageBox.innerText = data;
+                    .then(response => response.json())   // parse JSON, not text
+                    .then(data => {
+                        messageBox.innerText = data.message; // now works!
+                        if (data.status === "success") {
                             form.reset();
-                        })
-                        .catch(error => {
-                            messageBox.innerText = 'An error occurred. Please try again.';
-                        });
+                        }
+                    })
+                    .catch(error => {
+                        messageBox.innerText = "An error occurred. Please try again.";
+                        console.error("Error:", error);
+                    });
                 });
             }
         });
