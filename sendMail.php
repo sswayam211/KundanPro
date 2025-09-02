@@ -1,12 +1,44 @@
 <?php
 require 'vendor/autoload.php'; // PHPMailer installed via Composer
+require 'vendor/autoload.php'; // PHPMailer installed via Composer
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 header('Content-Type: application/json'); // response in JSON
+header('Content-Type: application/json'); // response in JSON
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name    = $_POST['name'] ?? '';
+    $email   = $_POST['email'] ?? '';
+    $message = $_POST['message'] ?? '';
+    
+    
+    $servername = "localhost"; // On GoDaddy it is usually localhost
+    $username   = "KundanPro";
+    $password   = "Sujeet@3005";
+    $database   = "KUNDANPRO@LIVE";
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $database);
+    
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    // echo "Connected successfully!"; 
+    
+    $sql = "INSERT INTO Contact_info (NAME, EMAIL, MESSAGE) VALUES ('$name','$email','$message')";
+    $result = mysqli_query($conn, $sql);
+    
+    if(!$result){
+        echo "Error: " . mysqli_error($conn);
+    } else {
+        // echo "Data saved successfully!";
+        
+        
+        // sending mail
+        $mail = new PHPMailer(true);
     $name    = $_POST['name'] ?? '';
     $email   = $_POST['email'] ?? '';
     $message = $_POST['message'] ?? '';
