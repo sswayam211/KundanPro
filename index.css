@@ -34,6 +34,10 @@ a:hover {
     text-align: justify;
 }
 
+button:disabled {
+    cursor: not-allowed;
+}
+
 .button {
     border: none;
     background: linear-gradient(63deg, #2670b3, #19fbfa);
@@ -219,8 +223,22 @@ header {
     animation: gradientMove 5s ease infinite;
 }
 
-input,
-textarea {
+.input,
+.textarea {
+    border: 1px solid #0000002b;
+    padding: 7px 10px;
+    margin: 5px 0px;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: 1px solid #2393c5;
+}
+
+footer input,
+footer textarea {
     border: none;
     padding: 2px 10px;
     margin: 5px 0px;
@@ -237,21 +255,38 @@ textarea {
     text-align: center;
     border: 1px solid #eabb31;
     padding: 0px 40px 40px 40px;
-    background: #eabb31;
+    /* background: #eabb31; */
+    background: white;
+    color: black;
     border-radius: 15px;
     margin-top: 60px;
     height: 165px;
+    transition: all .2s linear;
+    cursor: pointer;
+}
+
+.box:hover {
+    transform: scale(1.01);
+    box-shadow: 2px 2px 10px #eabb31;
+    color: #eabb31;
 }
 
 .box-img {
     height: 110px;
     width: 110px;
     margin: auto;
-    background: #eabb31;
+    /* background: #eabb31; */
+    background: white;
     padding: 20px;
     margin-top: -55px;
+    border-top: 1px solid #eabb31;
     overflow: hidden;
     border-radius: 50% 50% 0% 0%;
+    transition: all .2s linear;
+}
+
+.box:hover .box-img {
+    /* box-shadow: 0px 0px 5px black; */
 }
 
 .box-img img {
@@ -260,7 +295,8 @@ textarea {
 
 .box:hover .box-img img {
     transform: rotateY(360deg);
-    filter: invert(1);
+    /* filter: invert(1); */
+    filter: invert(70%) sepia(71%) saturate(450%) hue-rotate(5deg) brightness(95%) contrast(95%);
 }
 
 .why-box {
@@ -356,7 +392,8 @@ textarea {
     color: #53b760;
 }
 
-#messageBox {
+#messageBox,
+#messageBox-2 {
     color: white;
     font-weight: bold;
     text-shadow: 0px 0px 8px black;
